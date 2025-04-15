@@ -4,12 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FormGuard - Robust Form Validation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="dist/styles.css">
 </head>
 <body>
     <div class="container">
         <h1>Contact Form</h1>
-        <form id="example-form" novalidate>
+        
+        <!-- Form error container for security alerts -->
+        <div id="form-error" class="form-error" role="alert" style="display: none;"></div>
+        
+        <form id="example-form" novalidate autocomplete="off">
             <div class="form-field">
                 <label for="name">Name</label>
                 <input 
@@ -17,7 +22,8 @@
                     id="name" 
                     name="name" 
                     aria-required="true"
-                    aria-describedby="name-error">
+                    aria-describedby="name-error"
+                    data-lpignore="true">
             </div>
 
             <div class="form-field">
@@ -27,7 +33,9 @@
                     id="email" 
                     name="email" 
                     aria-required="true"
-                    aria-describedby="email-error">
+                    aria-describedby="email-error"
+                    autocomplete="off"
+                    data-lpignore="true">
             </div>
 
             <div class="form-field">
@@ -37,7 +45,8 @@
                     id="phone" 
                     name="phone" 
                     aria-required="true"
-                    aria-describedby="phone-error">
+                    aria-describedby="phone-error"
+                    data-lpignore="true">
             </div>
 
             <div class="form-field">
@@ -48,6 +57,29 @@
                     rows="4" 
                     aria-required="true"
                     aria-describedby="message-error"></textarea>
+            </div>
+            
+            <!-- Honeypot field - invisible to humans but bots will fill it -->
+            <div class="form-field" style="display: none;" aria-hidden="true">
+                <label for="website">Website</label>
+                <input 
+                    type="text" 
+                    id="website" 
+                    name="website" 
+                    tabindex="-1" 
+                    autocomplete="off">
+            </div>
+            
+            <!-- Simple CAPTCHA -->
+            <div class="form-field captcha-field">
+                <label for="captcha">Please type the number five</label>
+                <input 
+                    type="text" 
+                    id="captcha" 
+                    name="captcha" 
+                    aria-required="true"
+                    aria-describedby="captcha-error"
+                    maxlength="1">
             </div>
 
             <button type="submit">Submit</button>
