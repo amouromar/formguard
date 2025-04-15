@@ -1,0 +1,77 @@
+.form-field {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.form-field input,
+.form-field textarea,
+.form-field select {
+  width: 100%;
+  padding: 0.5rem;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.form-field input:focus,
+.form-field textarea:focus,
+.form-field select:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+/* Error state */
+.form-field input.error,
+.form-field textarea.error,
+.form-field select.error {
+  border-color: #dc3545;
+}
+
+/* Success state */
+.form-field input.success,
+.form-field textarea.success,
+.form-field select.success {
+  border-color: #28a745;
+}
+
+/* Error message */
+.error-message {
+  color: #dc3545;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  display: block;
+}
+
+/* Accessibility focus styles */
+.form-field input:focus-visible,
+.form-field textarea:focus-visible,
+.form-field select:focus-visible {
+  outline: 3px solid #007bff;
+  outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (forced-colors: active) {
+  .form-field input.error,
+  .form-field textarea.error,
+  .form-field select.error {
+    border: 2px solid Mark;
+  }
+
+  .form-field input.success,
+  .form-field textarea.success,
+  .form-field select.success {
+    border: 2px solid Mark;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .form-field input,
+  .form-field textarea,
+  .form-field select {
+    transition: none;
+  }
+} 
